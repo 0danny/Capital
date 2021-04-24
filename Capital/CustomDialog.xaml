@@ -1,0 +1,26 @@
+﻿<ui:ContentDialog
+    x:Class="Capital.CustomDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:sc="clr-namespace:Capital;assembly=Capital"
+    xmlns:ui1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+    mc:Ignorable="d"
+    d:DesignWidth="548"
+    d:DesignHeight="756"
+    x:Name="dialog"
+    Title="MessageBox"
+    PrimaryButtonText="Ok"
+    DefaultButton="Primary"
+    ui:ThemeManager.RequestedTheme="Light"
+    >
+
+    <ui:SimpleStackPanel Spacing="12">
+        <Label x:Name="boxLabel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="270" Margin="0,0,0,-19">
+
+            <ui1:TextBlock x:Name="boxTextBlock" Text="" TextWrapping="Wrap" Height="77"/>
+        </Label>
+    </ui:SimpleStackPanel>
+</ui:ContentDialog>

@@ -1,12 +1,81 @@
-﻿<Window x:Class="Capital.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Capital.MainWindow"
         xmlns:local="clr-namespace:Capital"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Capital" Height="805.5" Width="1445"
+        ResizeMode="NoResize"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:ThemeManager.RequestedTheme="Light">
+
     <Grid>
-        
+        <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}" Margin="0,97,0,10">
+            <TabItem Header="Dashboard">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
+                    <ui:SimpleStackPanel Margin="12" Spacing="24">
+                        <TextBlock Text="Overview" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <Button x:Name="addButton" Content="Add" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="AddButton_Click" />
+                        <ListView Margin="0,10,0,-461" x:Name="stockListView" BorderBrush="#FF0078D7" BorderThickness="1">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Product" Width="250" DisplayMemberBinding="{Binding product}" />
+                                    <GridViewColumn Header="Store" Width="260" DisplayMemberBinding="{Binding store}" />
+                                    <GridViewColumn Header="Last Checked" Width="220" DisplayMemberBinding="{Binding lastChecked}"/>
+                                    <GridViewColumn Header="Price" Width="220" DisplayMemberBinding="{Binding price}" />
+                                    <GridViewColumn Header="Times Checked" Width="220" DisplayMemberBinding="{Binding timesChecked}" />
+                                    <GridViewColumn Header="Time Started" Width="225" DisplayMemberBinding="{Binding timeStarted}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ui:SimpleStackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Configurations">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock Text="Product Cofigurations" Style="{StaticResource HeaderTextBlockStyle}" Margin="14,10,10,548" />
+                    <ui:SimpleStackPanel Margin="12,77,12,404" Spacing="24" Orientation="Vertical">
+                        <Button x:Name="createNewButton" Content="Create New Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,10,0,99" Height="35" Click="CreateNewButton_Click" />
+                        <Button x:Name="deleteConfiguration" Content="Delete Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="deleteConfiguration_Click" Margin="0,-118,0,227" Height="35" />
+                        <Button x:Name="editConfiguration" Content="Edit Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,-246,0,355" Height="35" Click="EditConfiguration_Click" />
+                    </ui:SimpleStackPanel>
+                    <ListView Margin="14,226,10,10" x:Name="configView" BorderBrush="#FF0078D7" BorderThickness="1">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Configuration Name" Width="352.25" DisplayMemberBinding="{Binding configName}" />
+                                <GridViewColumn Header="Time Created" Width="352.25" DisplayMemberBinding="{Binding timeCreated}" />
+                                <GridViewColumn Header="Website Name" Width="352.25" DisplayMemberBinding="{Binding websiteName}"/>
+                                <GridViewColumn Header="Author" Width="352.25" DisplayMemberBinding="{Binding author}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left"
+                               Margin="10"
+                               TextWrapping="Wrap"
+                               Text="I want some cheese."
+                               VerticalAlignment="Top"
+                               Width="471"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Credits">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left"
+                               Margin="10"
+                               TextWrapping="Wrap"
+                               Text="Made by Dan"
+                               VerticalAlignment="Top"
+                               Width="471"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Image HorizontalAlignment="Left" Height="132" Margin="584,-4,0,0" VerticalAlignment="Top" Width="349" Source="Test7.png"/>
     </Grid>
 </Window>

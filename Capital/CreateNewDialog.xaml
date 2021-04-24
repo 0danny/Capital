@@ -1,0 +1,43 @@
+﻿<ui:ContentDialog
+    x:Class="Capital.CreateNewDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:sc="clr-namespace:Capital;assembly=Capital"
+    xmlns:ui1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+    mc:Ignorable="d"
+    d:DesignHeight="756"
+    d:DesignWidth="548"
+    x:Name="dialog"
+    Title="Create New"
+    PrimaryButtonText="Complete"
+    CloseButtonText="Cancel"
+    DefaultButton="Primary"
+    PrimaryButtonClick="OnPrimaryButtonClick"
+    CloseButtonClick="OnCloseButtonClick"
+    Closed="OnClosed"
+    ui:ThemeManager.RequestedTheme="Light"
+    >
+    
+    <ui:SimpleStackPanel Spacing="12">
+        <ui:SimpleStackPanel Spacing="0">
+            <Label x:Name="configLabel" Content="Config Name:"></Label>
+            <TextBox x:Name="configNameTxt" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="Newegg"></TextBox>
+        </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Author Name:"></Label>
+            <TextBox x:Name="authorNameTxt" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="John Smith"></TextBox>
+        </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Website Name:"></Label>
+            <TextBox x:Name="websiteNameTxt" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="https://www.newegg.com/"></TextBox>
+        </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Success Keys (Seperate by ,):"></Label>
+            <TextBox x:Name="successKeysTxt" AcceptsReturn="True" Controls:TextBoxHelper.Watermark="In Stock,Low Stock,Partial Stock"></TextBox>
+        </ui:SimpleStackPanel>
+    </ui:SimpleStackPanel>
+</ui:ContentDialog>
