@@ -11,10 +11,6 @@ Capital is a stock checking program for websites that operates in the background
 for product data and route them to the dashboard for ease of use. It will be able to constantly ping 100s of product websites at once to check for available stock, this may include
 PS5, 3080 etc. The insipiration stems from other stock checking websites were they may charge upwards of $30-40 USD to use cloud servers for this matter, however
 for the average person I wanted to create a free alternative to allow anyone to contribute.
-
-It is written in C# WPF purely for UI/UX experiences to be enjoyable and to have performance increases when updating a large amount of UI controls
-at any given time. I am not using MVVM at this time as I believe a application of this size/nature it is a bit overkill for, however if it does scale
-I may consider it in the future.
 </p>
 
 
