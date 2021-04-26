@@ -1,5 +1,7 @@
 ﻿using Capital.Core.IO;
+using Capital.Core.Main;
 using Capital.Core.Modules;
+using ModernWpf.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +40,7 @@ namespace Capital
     {
         private ConfigurationHandler configHandler;
         public CreateNewDialog createNewDialog;
+        private StockEngine stockEngine;
 
         public MainWindow()
         {
@@ -45,16 +48,34 @@ namespace Capital
 
             configHandler = new ConfigurationHandler(this);
             createNewDialog = new CreateNewDialog(configHandler);
+            stockEngine = new StockEngine(this);
 
-            stockListView.Items.Add(new DashboardViewItem { product = "Nvidia RTX 3080 Max Pro", store = "MSY - Melton", lastChecked = "30 seconds ago", price = "$1300 USD", timesChecked = "1313100 Times", timeStarted = "12/2/2021" });
+            //stockListView.Items.Add(new DashboardViewItem { product = "Nvidia RTX 3080 Max Pro", store = "MSY - Melton", lastChecked = "30 seconds ago", price = "$1300 USD", timesChecked = "1313100 Times", timeStarted = "12/2/2021" });
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void addButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = new AddDialog().ShowAsync();
+            AddDialog dialog = new AddDialog(configHandler);
+            ContentDialogResult result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                //Get save item from the selecton | No error catching right now, lets just hope it finds it
+                ConfigurationSaveItem saveItem = configHandler.saveItemList.Where(var => var.viewItem.configName == dialog.configBox.Text).First();
+
+                //Define engine settings
+                EngineSettings settings = new EngineSettings()
+                {
+                    interval = (int)dialog.checkingIntervalNumeral.Value,
+                    productURL = dialog.productURLText.Text
+                };
+
+                //Create an instance of the checker in the StockEngine
+                stockEngine.createInstance(saveItem, settings);
+            }
         }
 
-        private void CreateNewButton_Click(object sender, RoutedEventArgs e)
+        private void createNewButton_Click(object sender, RoutedEventArgs e)
         {
             createNewDialog.ShowAsync();
         }
@@ -71,7 +92,7 @@ namespace Capital
             }
         }
 
-        private void EditConfiguration_Click(object sender, RoutedEventArgs e)
+        private void editConfiguration_Click(object sender, RoutedEventArgs e)
         {
             if (configView.SelectedItems.Count > 0)
             {

@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:sc="clr-namespace:Capital;assembly=Capital"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:ui1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
     mc:Ignorable="d"
     d:DesignHeight="756"
@@ -16,13 +17,21 @@
     CloseButtonText="Cancel"
     DefaultButton="Primary"
     PrimaryButtonClick="OnPrimaryButtonClick"
-    CloseButtonClick="OnCloseButtonClick"
     Closed="OnClosed"
-    ui:ThemeManager.RequestedTheme="Light"
-    >
-    
+    ui:ThemeManager.RequestedTheme="Light" Opened="Dialog_Opened">
+
     <ui:SimpleStackPanel Spacing="12">
-        <TextBox Text="..." AcceptsReturn="True" ui:ControlHelper.Header="Title"></TextBox>
-        
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Configurations:"></Label>
+            <ComboBox x:Name="configBox" SelectedIndex="0"></ComboBox>
+        </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Checking Interval (seconds):"></Label>
+            <Controls:NumericUpDown x:Name="checkingIntervalNumeral" Maximum="1000" Minimum="1" Value="1"></Controls:NumericUpDown>
+        </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Product URL:"></Label>
+            <TextBox x:Name="productURLText" Controls:TextBoxHelper.Watermark="https://www.newegg.com/global/US-en/p/00H-00UY-00040"></TextBox>
+        </ui:SimpleStackPanel>
     </ui:SimpleStackPanel>
 </ui:ContentDialog>

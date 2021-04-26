@@ -19,7 +19,7 @@
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
                     <ui:SimpleStackPanel Margin="12" Spacing="24">
                         <TextBlock Text="Overview" Style="{StaticResource HeaderTextBlockStyle}" />
-                        <Button x:Name="addButton" Content="Add" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="AddButton_Click" />
+                        <Button x:Name="addButton" Content="Add Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="addButton_Click" />
                         <ListView Margin="0,10,0,-461" x:Name="stockListView" BorderBrush="#FF0078D7" BorderThickness="1">
                             <ListView.View>
                                 <GridView>
@@ -39,9 +39,9 @@
                 <Grid Background="#FFE5E5E5">
                     <TextBlock Text="Product Cofigurations" Style="{StaticResource HeaderTextBlockStyle}" Margin="14,10,10,548" />
                     <ui:SimpleStackPanel Margin="12,77,12,404" Spacing="24" Orientation="Vertical">
-                        <Button x:Name="createNewButton" Content="Create New Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,10,0,99" Height="35" Click="CreateNewButton_Click" />
+                        <Button x:Name="createNewButton" Content="Create New Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,10,0,99" Height="35" Click="createNewButton_Click" />
                         <Button x:Name="deleteConfiguration" Content="Delete Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="deleteConfiguration_Click" Margin="0,-118,0,227" Height="35" />
-                        <Button x:Name="editConfiguration" Content="Edit Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,-246,0,355" Height="35" Click="EditConfiguration_Click" />
+                        <Button x:Name="editConfiguration" Content="Edit Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Margin="0,-246,0,355" Height="35" Click="editConfiguration_Click" />
                     </ui:SimpleStackPanel>
                     <ListView Margin="14,226,10,10" x:Name="configView" BorderBrush="#FF0078D7" BorderThickness="1">
                         <ListView.View>

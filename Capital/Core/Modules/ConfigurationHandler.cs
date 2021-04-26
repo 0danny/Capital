@@ -17,6 +17,8 @@ namespace Capital.Core.Modules
         public MainWindow windowRef;
         private string folderPath = Directory.GetCurrentDirectory() + @"\Configurations";
 
+        public List<ConfigurationSaveItem> saveItemList = new List<ConfigurationSaveItem>();
+
         public ConfigurationHandler(MainWindow windowRef)
         {
             this.windowRef = windowRef;
@@ -26,6 +28,7 @@ namespace Capital.Core.Modules
             loadConfigs();
         }
 
+        //Very inefficient
         public ConfigurationSaveItem getSaveItem(ConfigurationViewItem viewItem)
         {
             return JsonConvert.DeserializeObject<ConfigurationSaveItem>(File.ReadAllText(folderPath + @"\" + viewItem.configName + ".config"));
@@ -52,6 +55,7 @@ namespace Capital.Core.Modules
                     File.Delete(fullPath);
                 }
 
+                saveItemList.Remove(saveItemList.Where(var => var.viewItem.configName == listViewItem.configName).First());
                 windowRef.configView.Items.Remove(listViewItem);
             }
             catch (Exception ex)
@@ -76,6 +80,7 @@ namespace Capital.Core.Modules
                 foreach (string path in filePaths)
                 {
                     ConfigurationSaveItem saveItem = JsonConvert.DeserializeObject<ConfigurationSaveItem>(File.ReadAllText(path));
+                    saveItemList.Add(saveItem);
                     windowRef.configView.Items.Add(saveItem.viewItem);
                 }
             }
@@ -102,6 +107,8 @@ namespace Capital.Core.Modules
                     _ = new CustomDialog("Error", "A file with the same name already exists.").ShowAsync();
                     return;
                 }
+
+                saveItemList.Add(saveItem);
 
                 File.WriteAllText(completePathString, JsonConvert.SerializeObject(saveItem));
 

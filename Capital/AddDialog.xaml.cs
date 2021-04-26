@@ -1,4 +1,6 @@
-﻿using ModernWpf.Controls;
+﻿using Capital.Core.IO;
+using Capital.Core.Modules;
+using ModernWpf.Controls;
 using System;
 using System.Windows;
 
@@ -6,9 +8,18 @@ namespace Capital
 {
     public partial class AddDialog
     {
-        public AddDialog()
+        private ConfigurationHandler configHandler;
+
+        public AddDialog(ConfigurationHandler configHandler)
         {
             InitializeComponent();
+            this.configHandler = configHandler;
+
+            LoggerFactory.debug(this, "Size: " + configHandler.saveItemList.Count);
+            foreach (ConfigurationSaveItem saveItem in configHandler.saveItemList)
+            {   
+                configBox.Items.Add(saveItem.viewItem.configName);
+            }
         }
 
         private void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -16,19 +27,14 @@ namespace Capital
 
         }
 
-        private void OnSecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-
-        }
-
-        private void OnCloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            
-        }
-
         private void OnClosed(ContentDialog sender, ContentDialogClosedEventArgs args)
         {
-            
+
+        }
+
+        private void Dialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+
         }
     }
 }
