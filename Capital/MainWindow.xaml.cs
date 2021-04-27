@@ -21,21 +21,6 @@ using System.Windows.Shapes;
 namespace Capital
 {
 
-    public class DashboardViewItem
-    {
-        public string product { get; set; }
-
-        public string store { get; set; }
-
-        public string lastChecked { get; set; }
-
-        public string price { get; set; }
-
-        public string timesChecked { get; set; }
-
-        public string timeStarted { get; set; }
-    }
-
     public partial class MainWindow : Window
     {
         private ConfigurationHandler configHandler;
@@ -50,7 +35,7 @@ namespace Capital
             createNewDialog = new CreateNewDialog(configHandler);
             stockEngine = new StockEngine(this);
 
-            //stockListView.Items.Add(new DashboardViewItem { product = "Nvidia RTX 3080 Max Pro", store = "MSY - Melton", lastChecked = "30 seconds ago", price = "$1300 USD", timesChecked = "1313100 Times", timeStarted = "12/2/2021" });
+            stockListView.ItemsSource = stockEngine.dashItems;
         }
 
         private async void addButton_Click(object sender, RoutedEventArgs e)
@@ -67,7 +52,8 @@ namespace Capital
                 EngineSettings settings = new EngineSettings()
                 {
                     interval = (int)dialog.checkingIntervalNumeral.Value,
-                    productURL = dialog.productURLText.Text
+                    productURL = dialog.productURLText.Text,
+                    price = dialog.priceText.Text
                 };
 
                 //Create an instance of the checker in the StockEngine

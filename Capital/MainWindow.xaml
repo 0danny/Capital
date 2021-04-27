@@ -20,12 +20,12 @@
                     <ui:SimpleStackPanel Margin="12" Spacing="24">
                         <TextBlock Text="Overview" Style="{StaticResource HeaderTextBlockStyle}" />
                         <Button x:Name="addButton" Content="Add Configuration" Style="{StaticResource AccentButtonStyle}" Width="1409" Click="addButton_Click" />
-                        <ListView Margin="0,10,0,-461" x:Name="stockListView" BorderBrush="#FF0078D7" BorderThickness="1">
+                        <ListView Margin="0,10,0,-461" x:Name="stockListView" BorderBrush="#FF0078D7" BorderThickness="1" DataContext="{Binding}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Product" Width="250" DisplayMemberBinding="{Binding product}" />
                                     <GridViewColumn Header="Store" Width="260" DisplayMemberBinding="{Binding store}" />
-                                    <GridViewColumn Header="Last Checked" Width="220" DisplayMemberBinding="{Binding lastChecked}"/>
+                                    <GridViewColumn Header="Last Hit" Width="220" DisplayMemberBinding="{Binding lastHit}"/>
                                     <GridViewColumn Header="Price" Width="220" DisplayMemberBinding="{Binding price}" />
                                     <GridViewColumn Header="Times Checked" Width="220" DisplayMemberBinding="{Binding timesChecked}" />
                                     <GridViewColumn Header="Time Started" Width="225" DisplayMemberBinding="{Binding timeStarted}"/>

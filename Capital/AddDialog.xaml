@@ -33,5 +33,9 @@
             <Label Content="Product URL:"></Label>
             <TextBox x:Name="productURLText" Controls:TextBoxHelper.Watermark="https://www.newegg.com/global/US-en/p/00H-00UY-00040"></TextBox>
         </ui:SimpleStackPanel>
+        <ui:SimpleStackPanel Spacing="0">
+            <Label Content="Price:"></Label>
+            <TextBox x:Name="priceText" Controls:TextBoxHelper.Watermark="$1300 USD"></TextBox>
+        </ui:SimpleStackPanel>
     </ui:SimpleStackPanel>
 </ui:ContentDialog>
